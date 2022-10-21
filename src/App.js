@@ -6,19 +6,19 @@ function App() {
   const [count, setCount] = useState(0);
   const [data, setData] = useState([]);
   const [input, setInput] = useState();
-  const [wordsArray, setWordsArray] = useState(["     ","     ","     ","     ","     ",]);
+  const [wordsArray, setWordsArray] = useState(["     ","     ","     ","     ","     ","     "]);
 
   const inputRef = useRef()
 
   const handleSubmit = (e) => {
     setCount(count+1)
-    if (count >= 4) {
+    if (count >= 5) {
       alert("you lost")
       window.location.reload();
 
     } 
     e.preventDefault()
-    setWordsArray([input,...wordsArray.slice(0, 4)])
+    setWordsArray([input,...wordsArray.slice(0, 5)])
     inputRef.current.value = ""
     if (input === data[0]) {
       alert("you win!")
