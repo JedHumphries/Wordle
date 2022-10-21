@@ -5,12 +5,12 @@ import { useEffect, useState } from 'react';
 function App() {
   const [data, setData] = useState([]);
   const [input, setInput] = useState();
-  const [wordsArray, setWordsArray] = useState([]);
+  const [wordsArray, setWordsArray] = useState(["     ","     ","     ","     ","     ",]);
 
   const inputRef = useRef()
 
   const handleSubmit = () => {
-    setWordsArray([...wordsArray, input])
+    setWordsArray([input,...wordsArray.slice(0, 4)])
     inputRef.current.value = ""
     console.log(wordsArray[0]?.split(' ').map(i => i.charAt(0)).toString(), data[0]?.charAt(0))
   }
