@@ -9,13 +9,15 @@ function App() {
 
   const inputRef = useRef()
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault()
     setWordsArray([input,...wordsArray.slice(0, 4)])
     inputRef.current.value = ""
-    console.log(wordsArray[0]?.split(' ').map(i => i.charAt(0)).toString(), data[0]?.charAt(0))
+    console.log(data[0])
   }
 
   const handleInput = (e) => {
+    
     setInput(e.target.value)
   }
 
@@ -39,24 +41,26 @@ function App() {
     <div className="App">
       <div>Wordle</div>
       {wordsArray.map((word, index) => (
-        <div className="row">
+        <div key={index} className="row">
           {word.split('').map((letter, index) => (
           (letter === data[0]?.charAt(index))
           ?
-          <div className="box" style={{ backgroundColor: "green" }}>{letter}</div>
+          <div key={index} className="box" style={{ backgroundColor: "green" }}>{letter}</div>
           :
-          (letter === data[0]?.charAt(index)) ///TODO LIST
+          (data[0]?.includes(letter)) ///TODO LIST
           ?
-          <div className="box" style={{ backgroundColor: "yellow" }}>{letter}</div>
+          <div key={index} className="box" style={{ backgroundColor: "yellow" }}>{letter}</div>
           :
-          <div className="box">{letter}</div>
+          <div key={index} className="box">{letter}</div>
           ))}
         </div>
           ))
         }
       <div>
-        <input type="text" maxLength="5" ref={inputRef} onChange={handleInput} />
-        <button onClick={handleSubmit}>Submit</button>
+      <form onSubmit={handleSubmit}>
+        <input type="text" required minLength="5" maxLength="5" ref={inputRef} onChange={handleInput} />
+        <button type="submit">Submit</button>
+        </form>
       </div>
     </div>
   );
