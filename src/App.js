@@ -8,8 +8,7 @@ function App() {
   const [wordsArray, setWordsArray] = useState([]);
 
   const handleSubmit = () => {
-    setWordsArray([input, ...wordsArray])
-    console.log(wordsArray)
+    setWordsArray([...wordsArray, input])
   }
 
   const handleInput = (e) => {
