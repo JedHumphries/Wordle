@@ -13,7 +13,7 @@ function App() {
   const handleSubmit = (e) => {
     setCount(count+1)
     if (count >= 5) {
-      alert("you lost")
+      alert(`you lost the word was ` + data[0] )
       window.location.reload();
 
     } 
@@ -49,7 +49,7 @@ function App() {
 
   return (
     <div className="App">
-      <div>Wordle</div>
+      <div>Wordle Clone</div>
       {wordsArray.map((word, index) => (
         <div key={index} className="row">
           {word.split('').map((letter, index) => (
