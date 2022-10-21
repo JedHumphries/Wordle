@@ -4,6 +4,17 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const [data, setData] = useState([]);
+  const [input, setInput] = useState();
+  const [wordsArray, setWordsArray] = useState([]);
+
+  const handleSubmit = () => {
+    setWordsArray([input, ...wordsArray])
+    console.log(wordsArray)
+  }
+
+  const handleInput = (e) => {
+    setInput(e.target.value)
+  }
   
   useEffect(() => {
     // declare the data fetching function
@@ -25,55 +36,55 @@ function App() {
     <div className="App">
       <div>Wordle</div>
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
 
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[1]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[1]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[1]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[1]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[1]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
 
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[2]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[2]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[2]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[2]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[2]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
 
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[3]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[3]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[3]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[3]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[3]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
 
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[4]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[4]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[4]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[4]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[4]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
 
       <div className="row">
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
-      <div className="box"></div>
+      <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(0)) }</div>
+      <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(1)) }</div>
+      <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(2)) }</div>
+      <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(3)) }</div>
+      <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
       <div>
-        <input/>
-        <button>Submit</button>
+        <input type="text" onChange={handleInput}/>
+        <button onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
