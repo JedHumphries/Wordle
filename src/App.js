@@ -1,4 +1,4 @@
-
+import { useRef } from 'react';
 import './App.css';
 import { useEffect, useState } from 'react';
 
@@ -7,8 +7,11 @@ function App() {
   const [input, setInput] = useState();
   const [wordsArray, setWordsArray] = useState([]);
 
+  const inputRef= useRef()
+
   const handleSubmit = () => {
     setWordsArray([...wordsArray, input])
+    inputRef.current.value=""
   }
 
   const handleInput = (e) => {
@@ -35,7 +38,14 @@ function App() {
     <div className="App">
       <div>Wordle</div>
       <div className="row">
-      <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(0)) }</div>
+      { if ({wordsArray[0]?.split(' ').map(i => i.charAt(0))} === {data.map(i => i.charAt(0))}){
+       <div className="box" style={{backgroundColor: "green"}}>{wordsArray[0]?.split(' ').map(i => i.charAt(0)) }</div> 
+      } else if (correct but wrong place){
+        <div className="box" style={{backgroundColor: "yellow"}}>{wordsArray[0]?.split(' ').map(i => i.charAt(0)) }</div> 
+      } else {
+        <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(0)) }</div> 
+      }
+      }
       <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(1)) }</div>
       <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(2)) }</div>
       <div className="box">{wordsArray[0]?.split(' ').map(i => i.charAt(3)) }</div>
@@ -82,7 +92,7 @@ function App() {
       <div className="box">{wordsArray[5]?.split(' ').map(i => i.charAt(4)) }</div>
       </div>
       <div>
-        <input type="text" onChange={handleInput}/>
+        <input type="text" maxLength="5" ref={inputRef} onChange={handleInput}/>
         <button onClick={handleSubmit}>Submit</button>
       </div>
     </div>
